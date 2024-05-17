@@ -13,7 +13,7 @@ export default class Collector {
 
     collectExpiredNotes(): TFile[] {
 		let collected: TFile[] = [];
-		let now = window.moment();
+		let now = window.moment().subtract(7, 'days');
 
 		let allFiles = this.plugin.app.vault.getMarkdownFiles();
 
