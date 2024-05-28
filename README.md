@@ -79,6 +79,8 @@ Scan your vault for expired notes and then either delete or archive them, depend
   <dd>Choose if your notes should be <em>deleted</em> (this has no undo) or moved to a predefined archive folder. Please note that files with the same name will overwrite older files in your archive folder.</dd>
   <dt>Archive folder path</dt>
   <dd>Provide the folder path for your archive (relative to your Obsidian vault root).</dd>
+	<dt>Day Offset</dt>
+  <dd>Set an amount of days to add to the expiry date. For example, if you set this to 1, the note will expire one day after the date specified in the frontmatter.</dd>
 </dl>
 
 ## Changelog
