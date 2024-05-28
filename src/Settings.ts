@@ -25,6 +25,15 @@ export default class ExpiringNotesSettingTab extends PluginSettingTab {
                 await this.plugin.saveSettings();
             });
         });
+        new Setting(containerEl)
+        .setName('Check for expired notes regularly')
+        .addToggle((t) => {
+            t.setValue(this.plugin.settings.checkIntervall);
+            t.onChange(async (v) => {
+                this.plugin.settings.checkIntervall = v;
+                await this.plugin.saveSettings();
+            });
+        });
 
 		new Setting(containerEl)
 			.setName('Frontmatter key')

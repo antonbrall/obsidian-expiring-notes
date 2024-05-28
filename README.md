@@ -71,6 +71,8 @@ Scan your vault for expired notes and then either delete or archive them, depend
   <dd>Used to specify the date format you want to write your expiry dates in. Visit <a href="https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/01-format/">momentjs.com</a> for a list of possible date tokens.</dd>
   <dt>Check for expired notes at startup</dt>
   <dd>If this is enabled, Expiring Notes will collect all expired notes when you start Obsidian.</dd>
+  <dt>Check for expired notes regularly</dt>
+  <dd>If this is enabled, Expiring Notes will collect all expired notes every 5 minutes.</dd>
   <dt>Enable confirm dialogue</dt>
   <dd>If this is enabled, Expiring Notes will ask you if the expired notes it found should be archived/deleted now.</dd>
   <dt>Behavior</dt>

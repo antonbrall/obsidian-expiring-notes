@@ -12,6 +12,7 @@ interface ExpiringNotesSettings {
 	frontmatterKey: string;
 	behavior: string;
 	checkOnStartup: boolean;
+	checkIntervall: boolean;
 	archivePath: string;
 	confirm: boolean;
 	dateFormat: string;
@@ -22,6 +23,7 @@ const DEFAULT_SETTINGS: ExpiringNotesSettings = {
 	frontmatterKey: 'expires',
 	behavior: BEHAVIOR_DELETE,
 	checkOnStartup: false,
+	checkIntervall: false,
 	archivePath: 'Archive',
 	confirm: true,
 	dateFormat: 'YYYY-MM-DD',
@@ -159,6 +161,10 @@ export default class ExpiringNotesPlugin extends Plugin {
 				this.checkForExpiredNotes();
 			});	
 		}
+		if (this.settings.checkIntervall) {
+			this.registerInterval(window.setInterval(() => this.checkForExpiredNotes(), 5 * 60 * 1000));
+		}
+		this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
 	}
 
 	onunload() {}
@@ -170,4 +176,5 @@ export default class ExpiringNotesPlugin extends Plugin {
 	async saveSettings() {
 		await this.saveData(this.settings);
 	}
+	
 }
