@@ -11,9 +11,9 @@ export default class Collector {
         this.archive = new Archive(this.plugin);
     }
 
-    collectExpiredNotes(): TFile[] {
+    collectExpiredNotes(offset: number): TFile[] {
 		let collected: TFile[] = [];
-		let now = window.moment().subtract(7, 'days');
+		let now = window.moment().subtract(offset, 'days');
 
 		let allFiles = this.plugin.app.vault.getMarkdownFiles();
 

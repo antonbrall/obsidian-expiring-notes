@@ -3,7 +3,7 @@ import Archive from 'src/archive';
 import Collector from 'src/collector';
 import ConfirmModal from 'src/confirm';
 import { MESSAGE_CONFIRM_ARCHIVE, MESSAGE_CONFIRM_DELETION, BEHAVIOR_ARCHIVE, BEHAVIOR_DELETE, EXPIRY_DATE_PROMPT, EXPIRY_DATE_DESC, MESSAGE_CONFIRM_DELETION_SINGULAR, MESSAGE_CONFIRM_ARCHIVE_SINGULAR } from 'src/constants';
-import ExpiringNotesSettingTab from 'src/settings';
+import ExpiringNotesSettingTab from 'src/Settings';
 import FrontmatterParser from 'src/frontmatterparser';
 import * as chrono from 'chrono-node';
 import { ExpiryDatePromptModal } from 'src/expirydatepromptmodal';
@@ -15,6 +15,7 @@ interface ExpiringNotesSettings {
 	archivePath: string;
 	confirm: boolean;
 	dateFormat: string;
+	offsetDays: string;
 }
 
 const DEFAULT_SETTINGS: ExpiringNotesSettings = {
@@ -23,7 +24,8 @@ const DEFAULT_SETTINGS: ExpiringNotesSettings = {
 	checkOnStartup: false,
 	archivePath: 'Archive',
 	confirm: true,
-	dateFormat: 'YYYY-MM-DD'
+	dateFormat: 'YYYY-MM-DD',
+	offsetDays: "0"
 }
 
 export default class ExpiringNotesPlugin extends Plugin {
@@ -31,7 +33,7 @@ export default class ExpiringNotesPlugin extends Plugin {
 
 	async checkForExpiredNotes() {
 		let collector = new Collector(this);
-		let expiredNotes = collector.collectExpiredNotes();
+		let expiredNotes = collector.collectExpiredNotes(parseInt(this.settings.offsetDays));
 		let amount = expiredNotes.length;
 
 		if (!amount) {

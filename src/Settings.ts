@@ -105,6 +105,20 @@ export default class ExpiringNotesSettingTab extends PluginSettingTab {
 				})
             );
         }
+        new Setting(containerEl)
+            .setName('Day offset')
+            .setDesc('Set an amount of days to add to the expiry date. For example, if you set this to 1, the note will expire one day after the date specified in the frontmatter.')
+            .addText(text => text
+				.setPlaceholder('0')
+				.setValue(this.plugin.settings.offsetDays)
+				.onChange(async (value) => {
+                    if(!value) {
+                        value = '0';
+                    }
+					this.plugin.settings.offsetDays = value;
+					await this.plugin.saveSettings();
+				})
+            );
         
     }
 }
