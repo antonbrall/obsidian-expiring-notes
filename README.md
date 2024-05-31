@@ -5,7 +5,7 @@
 
 ----
 
-**Important note**: This plugin is still very much **in beta**. There are still bugs I'm trying to work out, so before we go live in the Community Plugin repository, I'd be delighted if you could report any bugs you find. Thank you!
+**Important note**: This plugin is forked and adds some more functionality. I will try to make it as stable as possible.
 
 ----
 
